@@ -6,6 +6,7 @@ from pyspark.streaming import StreamingContext
 
 
 def spark_context_creator():
+    print('inside spark')
     conf = SparkConf()
     # set name for our app
     conf.setAppName("KafkaSparkStreaming")
@@ -35,9 +36,9 @@ def connect_kafka(server_name, topic_name):
 
 
 sc = spark_context_creator()
-# ssc = StreamingContext()
-# To avoid unncessary logs
-consumer = connect_kafka('localhost:9092', 'sample-topic')
+print('spark-started')
+consumer = connect_kafka('localhost:9092', 'crypto-ETH-topic')
+
 while True:
     msg = consumer.poll(1.0)
 
@@ -46,9 +47,8 @@ while True:
     if msg.error():
         print("Consumer error happened: {}".format(msg.error()))
         continue
-    print("Connected to Topic: {} and Partition : {}".format(msg.topic(), msg.partition()))
-    # print("Received Message : {} with Offset : {}".format(msg.value().decode('utf-8'), msg.offset() ))
+
     dict = eval(msg.value().decode('utf-8'))
-    print(dict['message'])
+    print(dict)
 
 consumer.close()
