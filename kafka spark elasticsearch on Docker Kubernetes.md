@@ -240,7 +240,7 @@ services:
         restart: always
         container_name: nifi_docker
         ports:
-            - 8181:8181
+            - 8181:8181 
         environment:
             - NIFI_WEB_HTTP_PORT=8181
             - NIFI_SENSITIVE_PROPS_KEY=abcdefghijkl
