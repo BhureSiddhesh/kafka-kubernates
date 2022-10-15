@@ -1,5 +1,5 @@
 from datetime import time
-
+import ast
 from confluent_kafka import Consumer
 from pyspark import SparkConf, SparkContext
 from pyspark.streaming import StreamingContext
@@ -37,7 +37,7 @@ def connect_kafka(server_name, topic_name):
 
 # sc = spark_context_creator()
 # print('spark-started')
-consumer = connect_kafka('localhost:19092', 'crypto-ETH-topic')
+consumer = connect_kafka('localhost:19092', 'airline-tweet-topic')
 
 while True:
     msg = consumer.poll(1.0)
@@ -48,7 +48,19 @@ while True:
         print("Consumer error happened: {}".format(msg.error()))
         continue
 
-    dict = eval(msg.value().decode('utf-8'))
-    print(dict)
+    message = msg.value().decode('utf-16')
+    print(message)
+    try:
+        dict = eval(message)
+        print(dict['text'])
+    except Exception as e:
+        print(e)
+        break
+
+
+
+    # rdd = sc.parallelize([dict['text']])
+
+    # print(dict)
 
 consumer.close()

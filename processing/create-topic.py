@@ -2,13 +2,13 @@ from confluent_kafka.admin import AdminClient, NewTopic
 
 a = AdminClient({'bootstrap.servers': 'localhost:19092'})
 
-new_topics = [NewTopic(topic, num_partitions=1) for topic in ["crypto-ETH-topic"]]
+new_topics = [NewTopic(topic, num_partitions=1) for topic in ["airline-tweet-topic"]]
 
-# fs = a.create_topics(new_topics)
+fs = a.create_topics(new_topics)
 
-fs = a.list_topics()
-print(fs.brokers)
-print(fs.topics)
+# fs = a.list_topics()
+# print(fs.brokers)
+# print(fs.topics)
 
 # fs = a.delete_topics(['crypto-ETH-topic'])
 # try:

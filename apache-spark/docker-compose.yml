@@ -11,10 +11,9 @@ services:
       - SPARK_LOCAL_STORAGE_ENCRYPTION_ENABLED=no
       - SPARK_SSL_ENABLED=no
       - SPARK_PUBLIC_DNS=127.0.0.1
-      - SPARK_MASTER_PORT=8082
     ports:
       - '7077:7077'
-      - '8082:8082'
+      - '8080:8080'
 
   spark-worker:
     image: docker.io/bitnami/spark:3.3
