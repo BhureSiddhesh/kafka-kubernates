@@ -1,16 +1,22 @@
 from datetime import time
 import ast
 from confluent_kafka import Consumer
+from elasticsearch import Elasticsearch
 from pyspark import SparkConf, SparkContext
+from pyspark.sql import SparkSession
+
 from pyspark.streaming import StreamingContext
+
+
+def connect_elastc():
+    es = Elasticsearch("http://elastic:elastic@localhost:9200")
+    return es
 
 
 def spark_context_creator():
     print('inside spark')
     conf = SparkConf()
-    # set name for our app
     conf.setAppName("KafkaSparkStreaming")
-    # The master URL to connect
     conf.setMaster('spark://127.0.0.1:7077')
     sc = None
     try:
@@ -35,8 +41,9 @@ def connect_kafka(server_name, topic_name):
     return consumer
 
 
-# sc = spark_context_creator()
-# print('spark-started')
+sc = spark_context_creator()
+print('spark-started')
+elastic = connect_elastc()
 consumer = connect_kafka('localhost:19092', 'airline-tweet-topic')
 
 while True:
@@ -52,15 +59,11 @@ while True:
     print(message)
     try:
         dict = eval(message)
-        print(dict['text'])
+        elastic.index(index="tweet-index", body=dict)
+        print(dict)
+
     except Exception as e:
         print(e)
-        break
 
-
-
-    # rdd = sc.parallelize([dict['text']])
-
-    # print(dict)
 
 consumer.close()

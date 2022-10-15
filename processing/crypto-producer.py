@@ -23,7 +23,7 @@ def open_conn(ws):
 def show_message(ws, message):
 
     producer1.produce(topic=kafka_topic_name, key=str(uuid4()), value=message.encode())
-    producer1.flush(5)
+    producer1.flush()
     print(message)
 
 

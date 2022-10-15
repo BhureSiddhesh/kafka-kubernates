@@ -1,5 +1,4 @@
-# kafka-kubernates
-# kafka spark elasticsearch on Docker Kubernetes
+# kafka spark elasticsearch on Docker Kubernetes assignment
 ## Airline tweets and cryptocurrency data
 
 [![N|Solid](https://files.readme.io/5c6d2cd-cc-logo.svg)](https://docs.cloud.coinbase.com/exchange/docs/websocket-overview)

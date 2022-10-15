@@ -2,7 +2,7 @@ from confluent_kafka.admin import AdminClient, NewTopic
 
 a = AdminClient({'bootstrap.servers': 'localhost:19092'})
 
-new_topics = [NewTopic(topic, num_partitions=1) for topic in ["airline-tweet-topic"]]
+new_topics = [NewTopic(topic, num_partitions=1) for topic in ["crypto-ETH-topic"]]
 
 fs = a.create_topics(new_topics)
 
