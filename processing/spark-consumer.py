@@ -35,9 +35,9 @@ def connect_kafka(server_name, topic_name):
     return consumer
 
 
-sc = spark_context_creator()
-print('spark-started')
-consumer = connect_kafka('localhost:9092', 'crypto-ETH-topic')
+# sc = spark_context_creator()
+# print('spark-started')
+consumer = connect_kafka('localhost:19092', 'crypto-ETH-topic')
 
 while True:
     msg = consumer.poll(1.0)

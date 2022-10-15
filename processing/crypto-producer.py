@@ -32,7 +32,7 @@ coinbase_socket = 'wss://ws-feed.exchange.coinbase.com'
 try:
     print("Starting Kafka Producer")
     conf = {
-        'bootstrap.servers': 'localhost:9092'
+        'bootstrap.servers': 'localhost:19092'
     }
     kafka_topic_name = "crypto-ETH-topic"
     print("connecting to Kafka topic...")
