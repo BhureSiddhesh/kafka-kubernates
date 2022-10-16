@@ -1,0 +1,6 @@
+elasticsearch
+confluent-kafka
+pyspark
+websocket
+pandas
+numpy

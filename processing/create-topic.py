@@ -10,15 +10,6 @@ fs = a.create_topics(new_topics)
 # print(fs.brokers)
 # print(fs.topics)
 
-# fs = a.delete_topics(['crypto-ETH-topic'])
-# try:
-#     fs = a.create_topics(new_topics)
-#     print(fs)
-# except Exception as e:
-#     print("Failed to create topic {}".format(e))
-
-
-# # fs = a.delete_topics(new_topics)
 # Wait for each operation to finish.
 for topic, f in fs.items():
     try:

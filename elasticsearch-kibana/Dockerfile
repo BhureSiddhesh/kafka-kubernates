@@ -1,8 +1,4 @@
-#
-# Elasticsearch Dockerfile
-#
-# https://github.com/dockerfile/elasticsearch
-#
+
 
 # Pull base image.
 FROM ubuntu:20.04
@@ -22,10 +18,7 @@ WORKDIR /data
 # Define commonly used JAVA_HOME variable
 ENV JAVA_HOME /usr/lib/jvm/java-8-openjdk-amd64
 
-# Define default command.
 CMD ["bash"]
-
-#https://artifacts.elastic.co/downloads/elasticsearch/elasticsearch-8.0.0-linux-x86_64.tar.gz
 
 
 # Install Elasticsearch.
@@ -49,8 +42,6 @@ RUN useradd elastic --create-home --shell /bin/bash  && \
     chmod -R 755 /usr/lib/jvm/java-8-openjdk-amd64 &&
 
 
-
-
 USER elastic
 
 # Define working directory.
@@ -59,8 +50,6 @@ WORKDIR /data
 # Define default command.
 CMD ["/elasticsearch/bin/elasticsearch"]
 
-# Expose ports.
-#   - 9200: HTTP
-#   - 9300: transport
+
 EXPOSE 9200
 EXPOSE 9300

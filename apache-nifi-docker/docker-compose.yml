@@ -12,10 +12,4 @@ services:
             - NIFI_SENSITIVE_PROPS_KEY=abcdefghijkl
         volumes:
             - ./nifi/conf:/opt/nifi/nifi-current/conf
-            # - ./nifi/content:/opt/nifi/nifi-current/content_repository
-            # - ./nifi/db:/opt/nifi/nifi-current/database_repository
-            # - ./nifi/flowfile:/opt/nifi/nifi-current/flowfile_repository
-            # - ./nifi/state:/opt/nifi/nifi-current/state
-            # - ./nifi/logs:/opt/nifi/nifi-current/logs
-        
    

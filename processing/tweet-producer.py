@@ -34,6 +34,7 @@ for index, row in df.iterrows():
     tweet_string = json.dumps(dict)
 
     try:
+        # for handling emojis in tweets
         producer1.produce(topic=kafka_topic_name, key=str(uuid4()), value=tweet_string.encode('utf-16','surrogatepass'))
         print('published {}'.format(tweet_string))
         producer1.flush()

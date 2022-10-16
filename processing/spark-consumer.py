@@ -55,6 +55,7 @@ while True:
         print("Consumer error happened: {}".format(msg.error()))
         continue
 
+    # for handling emojis in tweets
     message = msg.value().decode('utf-16')
     print(message)
     try:
